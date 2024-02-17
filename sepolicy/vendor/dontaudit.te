@@ -1,4 +1,4 @@
-dontaudit iorapd self:capability { dac_read_search };
+dontaudit atrace self:capability { dac_read_search };
 dontaudit fsck_untrusted self:capability { sys_resource };
 
 dontaudit system_app {

@@ -7,7 +7,7 @@ import android.content.Context;
 import android.os.Bundle;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.lenovo.parts.SecureSettingListPreference;
 import com.lenovo.parts.SecureSettingSwitchPreference;
@@ -16,7 +16,7 @@ import com.lenovo.parts.CustomSeekBarPreference;
 
 import com.lenovo.parts.R;
 
-public class DeviceSettings extends PreferenceFragment implements
+public class DeviceSettings extends PreferenceFragmentCompat implements
         Preference.OnPreferenceChangeListener {
 
     private static final String TAG = "LenovoParts";

@@ -27,6 +27,11 @@ PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-im
 USE_DEX2OAT_DEBUG := false
 WITH_DEXPREOPT_DEBUG_INFO := false
 
+# Enable whole-program R8 Java optimizations for SystemUI and system_server,
+# but also allow explicit overriding for testing and development.
+SYSTEM_OPTIMIZE_JAVA ?= true
+SYSTEMUI_OPTIMIZE_JAVA ?= true
+
 # Speed up
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     Settings
@@ -91,7 +96,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl:32 \
     android.hardware.audio.service \
     android.hardware.audio.effect@6.0-impl:32 \
-    android.hardware.bluetooth.audio@2.1-impl:32 \
+    android.hardware.bluetooth.audio-impl \
     android.hardware.soundtrigger@2.1-impl:32 \
     audio_amplifier.msm8953 \
     audio.bluetooth.default \
@@ -114,7 +119,6 @@ PRODUCT_COPY_FILES += \
 # Audio XML configuration files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
@@ -142,8 +146,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.device@1.0:64 \
     camera.msm8953 \
     libcamshim \
-    libgui_vendor:32 \
-    GrapheneCamera
+    libgui_vendor:32
 
 # CarrierConfig
 PRODUCT_PACKAGES += \
@@ -176,7 +179,7 @@ PRODUCT_PACKAGES += \
 
 # DPM
 PRODUCT_PACKAGES += \
-    libdpmframework_shim
+    libcutils_shim
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -223,6 +226,9 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl.recovery \
     android.hardware.health@2.1-service
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/org.lineageos.health.excluded.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/org.lineageos.health.excluded.xml
+
 # Libhdl
 PRODUCT_PACKAGES += \
     android.hidl.allocator@1.0.vendor \
@@ -234,18 +240,14 @@ PRODUCT_PACKAGES += \
 
 # HIDL
 PRODUCT_PACKAGES += \
-    android.hidl.base@1.0
-
-# HW crypto
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.cryptfshw@1.0-service-qti.qsee \
-    vendor.qti.hardware.cryptfshw@1.0.vendor:64
+    android.hidl.base@1.0.vendor
 
 # IMS
 PRODUCT_PACKAGES += \
     ims-ext-common \
     ims_ext_common.xml \
-    libvt_shim
+    libgui_shim \
+    libui_shim
 
 # Keylayout
 PRODUCT_COPY_FILES += \
@@ -266,10 +268,6 @@ PRODUCT_COPY_FILES += \
 # IRSC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
-
-# IORap
-PRODUCT_SYSTEM_PROPERTIES += \
-    ro.iorapd.enable=false
 
 # Keymaster HAL
 PRODUCT_PACKAGES += \
@@ -457,7 +455,7 @@ PRODUCT_COPY_FILES += \
 
 # Whitelisted apps
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml
+    $(LOCAL_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/qti_whitelist.xml
 
 # Wifi
 PRODUCT_PACKAGES += \

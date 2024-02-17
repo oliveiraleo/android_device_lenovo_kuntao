@@ -285,3 +285,6 @@ firmware_directories /vendor/firmware_mnt/image/
 
 # Tilt sensor
 /sys/devices/iio:device* scan_elements/in_tilt_en          0660 system system
+
+# socinfo
+/sys/devices/soc0                 serial_number            0000    root      root

@@ -146,8 +146,6 @@ on post-fs-data
     mkdir /data/vendor/audio/acdbdata 0770 media audio
     mkdir /data/vendor/audio/acdbdata/delta 0770 media audio
 
-    setprop vold.post_fs_data_done 1
-
     # Create PERFD deamon related dirs
     mkdir /data/vendor/perfd 2770 root system
     rm /data/vendor/perfd/default_values
@@ -177,13 +175,6 @@ on post-fs-data
 
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
-    # F2FS tuning. Set cp_interval larger than dirty_expire_centisecs, 30 secs,
-    # to avoid power consumption when system becomes mostly idle. Be careful
-    # to make it too large, since it may bring userdata loss, if they
-    # are not aware of using fsync()/sync() to prepare sudden power-cut.
-    write /dev/sys/fs/by-name/userdata/cp_interval 200
-    write /dev/sys/fs/by-name/userdata/gc_urgent_sleep_time 50
-
     # Tweak background writeout
     write /proc/sys/vm/dirty_expire_centisecs 200
     write /proc/sys/vm/dirty_background_ratio 5
@@ -196,12 +187,6 @@ on property:vendor.radio.atfwd.start=false
 
 on property:vendor.media.target.version=*
     setprop vendor.sys.media.target.version ${vendor.media.target.version}
-
-on property:vold.decrypt=trigger_restart_framework
-    restart vendor.sensors-hal-1-0
-    restart vendor.camera-provider-2-4
-    restart vendor.audio-hal
-    restart wcnss-service
 
 # FM
 on property:hw.fm.init=0
@@ -219,13 +204,16 @@ service vendor.atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
-    writepid /dev/cpuset/system-background/tasks
+    task_profiles ServiceCapacityLow
 
 service loc_launcher /vendor/bin/loc_launcher
     class late_start
     user gps
     group gps
-    writepid /dev/cpuset/system-background/tasks
+    task_profiles ServiceCapacityLow
+
+on property:persist.sys.xtra-daemon.enabled=*
+    restart loc_launcher
 
 service qcom-sh /vendor/bin/init.qcom.sh
     class late_start
@@ -271,7 +259,7 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqb
     class core
     user root
     group root
-    writepid /dev/cpuset/system-background/tasks
+    task_profiles ServiceCapacityLow
 
 on charger
     setprop sys.usb.configfs 0
@@ -291,7 +279,7 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     # setting RLIMIT_RTPRIO allows binder RT priority inheritance
     rlimit rtprio 10 10
     ioprio rt 4
-    writepid /dev/cpuset/foreground/tasks
+    task_profiles ProcessCapacityHigh
     onrestart restart audioserver
 
 service vendor.gralloc-2-0 /vendor/bin/hw/android.hardware.graphics.allocator@2.0-service
@@ -302,7 +290,7 @@ service vendor.gralloc-2-0 /vendor/bin/hw/android.hardware.graphics.allocator@2.
     group graphics drmrpc
     capabilities SYS_NICE
     onrestart restart surfaceflinger
-    writepid /dev/cpuset/foreground/tasks
+    task_profiles ProcessCapacityHigh
 
 service vendor.hwcomposer-2-1 /vendor/bin/hw/android.hardware.graphics.composer@2.1-service
     override
@@ -312,7 +300,7 @@ service vendor.hwcomposer-2-1 /vendor/bin/hw/android.hardware.graphics.composer@
     group graphics drmrpc
     capabilities SYS_NICE
     onrestart restart surfaceflinger
-    writepid /dev/cpuset/foreground/tasks
+    task_profiles ProcessCapacityHigh
 
 service vendor.power_off_alarm /vendor/bin/power_off_alarm
     class core

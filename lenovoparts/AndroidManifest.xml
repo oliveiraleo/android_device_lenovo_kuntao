@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.lenovo.parts"
     android:sharedUserId="android.uid.system">
 
@@ -9,9 +10,6 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.INJECT_EVENTS"/>
 
-    <uses-sdk
-        android:minSdkVersion="30" />
-
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/lenovoparts_title"
@@ -19,6 +17,11 @@
         android:defaultToDeviceProtectedStorage="true"
         android:directBootAware="true"
         android:theme="@style/Theme.SubSettingsBase">
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            tools:replace="android:authorities"/>
 
         <receiver
             android:name=".BootReceiver" android:exported="true">

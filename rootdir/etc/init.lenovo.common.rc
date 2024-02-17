@@ -6,12 +6,7 @@ service vendor.vfmservice /vendor/bin/vfmService
     class main
     user system
     group system input uhid
-    writepid /dev/cpuset/system-background/tasks
-
-on property:vold.decrypt=trigger_restart_framework
-    restart vendor.smart_charger
-    restart vendor.vfmservice
-    restart vendor.fps_hal
+    task_profiles ServiceCapacityLow
 
 on boot
     # Double tap
@@ -44,7 +39,7 @@ on post-fs
 
 on post-fs-data
     # Fingerprint
-    mkdir /data/validity 0775 system system encryption=Require
+    mkdir /data/validity 0775 system system encryption=None
 
     # Sensors
     mkdir /data/STSensorHAL 0775 system system encryption=Require
