@@ -1,0 +1,9 @@
+#
+# system_ext.prop for kuntao
+#
+
+# MTE
+arm64.memtag.process.system_server=off
+
+# Radio
+ro.telephony.use_old_mnc_mcc_format=true

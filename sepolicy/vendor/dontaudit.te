@@ -1,0 +1,7 @@
+dontaudit iorapd self:capability { dac_read_search };
+dontaudit fsck_untrusted self:capability { sys_resource };
+
+dontaudit system_app {
+  system_suspend_control_service
+  system_suspend_control_internal_service
+}:service_manager find;

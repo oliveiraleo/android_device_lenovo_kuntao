@@ -1,0 +1,10 @@
+allow init self:capability sys_nice;
+
+# leds
+allow init sysfs_leds:lnk_file read;
+
+# Battery
+allow init sysfs_usb_supply:file setattr;
+
+# Other
+allow init sysfs:file setattr;

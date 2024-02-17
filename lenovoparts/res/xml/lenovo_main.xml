@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:title="@string/lenovoparts_title">
+
+   <PreferenceCategory
+        android:title="@string/fp_title">
+    <Preference
+        android:key="fingerprint_gestures"
+        android:title="@string/fp_settings_title"
+        android:summary="@string/fp_settings_summary"
+        android:icon="@drawable/ic_fp_gestures"
+        android:persistent="false" >
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.lenovo.gestures"
+                android:targetClass="com.lenovo.gestures.ButtonSettingsActivity" />
+        </Preference>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="audio"
+        android:title="@string/audio_category">
+        <com.lenovo.parts.CustomSeekBarPreference
+            android:defaultValue="4"
+            android:key="headphone_gain"
+            android:max="20"
+            app:min="-40"
+            android:icon="@drawable/ic_headphone"
+            android:title="@string/headphone_gain" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="vibration"
+        android:title="@string/vibration_category">
+        <com.lenovo.parts.VibrationSeekBarPreference
+            android:defaultValue="20"
+            android:key="vibration_strength"
+            android:max="100"
+            android:title="@string/vibration_strength_title"
+            android:icon="@drawable/ic_vibrate"
+            app:min="1" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/touchscreen_title">
+        <com.lenovo.parts.SecureSettingSwitchPreference
+            android:key="glove_mode"
+            android:defaultValue="false"
+            android:title="@string/glove_mode_title"
+            android:summary="@string/glove_mode_summary"
+            android:icon="@drawable/ic_glove_mode" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/fastcharger_title">
+        <com.lenovo.parts.SecureSettingSwitchPreference
+            android:key="fastcharge"
+            android:defaultValue="false"
+            android:title="@string/fastcharge_title"
+            android:summary="@string/fastcharge_summary"
+            android:icon="@drawable/ic_fastcharge" />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!--- Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.       -->
+<!--- Copyright (c) 2013-2021, The Linux Foundation. All rights reserved.       -->
 <!---                                                                           -->
 <!--- Redistribution and use in source and binary forms, with or without        -->
 <!--- modification, are permitted provided that the following conditions are    -->
@@ -29,6 +29,7 @@
     <param version="0x0101" /> <!-- this must be the first param -->
 
     <common_config>
+        <param implementer_version="0x0100" />
         <param max_cpe_sessions="1" />
         <param max_ape_sessions="5" />
         <param enable_failure_detection="false" />

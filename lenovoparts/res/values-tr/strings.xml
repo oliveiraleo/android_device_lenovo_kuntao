@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Head title -->
+    <string name="lenovoparts_title">Lenovo parts</string>
+    <string name="lenovoparts_settings_summary">Cihaza özel gelişmiş ayarlar</string>
+
+    <!-- Fp gestures -->
+    <string name="fp_title">Hareketler</string>
+    <string name="fp_settings_title">Parmak izi hareketleri</string>
+    <string name="fp_settings_summary">Cihaza özel parmak izi hareketleri</string>
+
+    <!-- Sound control -->
+    <string name="audio_category">Ses</string>
+    <string name="headphone_gain">Kulaklık &amp; Arama ses seviyesi</string>
+
+    <!-- Vibrator -->
+    <string name="vibration_category">Titreşim</string>
+    <string name="vibration_strength_title">Titreşim yoğunluğu</string>
+
+    <!-- Touchscreen -->
+    <string name="touchscreen_title">Dokunma</string>
+    <string name="glove_mode_title">Yüksek dokunmatik hassasiyeti</string>
+    <string name="glove_mode_summary">Dokunmatik ekran hassasiyetini arttırarak eldiven ile kullanıma olanak verir</string>
+
+    <!-- Usb fastcharge -->
+    <string name="fastcharger_title">Usb</string>
+    <string name="fastcharge_title">Usb hızlı şarj</string>
+    <string name="fastcharge_summary">Bilgisayara usb portu ile bağlanıldığında hızlı şarjı etkinleştir</string>
+</resources>

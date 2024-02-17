@@ -1,0 +1,9 @@
+# Alarm
+allow poweroffalarm_app cgroup:file rw_file_perms;
+
+allow poweroffalarm_app hal_alarm_qti_hwservice:hwservice_manager find;
+
+get_prop(poweroffalarm_app, vendor_alarm_boot_prop);
+
+allow poweroffalarm_app system_data_file:dir search;
+allow poweroffalarm_app user_profile_root_file:dir search;

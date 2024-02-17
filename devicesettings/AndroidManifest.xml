@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2019 The LineageOS Project
+     Copyright (C) 2016 The CyanogenMod Project
+     Copyright (C) 2020-2021 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,27 +16,29 @@
      limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.lineageos.settings.device"
+    package="com.lenovo.gestures"
+    android:versionCode="6"
+    android:versionName="2.5"
     android:sharedUserId="android.uid.system">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INJECT_EVENTS"/>
 
-    <protected-broadcast android:name="org.lineageos.settings.device.FINGERPRINT_GESTURES" />
+    <protected-broadcast android:name="com.lenovo.gestures.FINGERPRINT_GESTURES" />
 
     <uses-sdk
-        android:minSdkVersion="29" />
+        android:minSdkVersion="30" />
 
     <application
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/device_settings_app_name"
-        android:theme="@style/Theme.Main"
+        android:label="@string/lenovo_gestures_title"
         android:defaultToDeviceProtectedStorage="true"
         android:directBootAware="true"
-        android:persistent="true">
+        android:theme="@style/Theme.SubSettingsBase">
 
         <provider
             android:name=".DeviceSettingsSearchIndexablesProvider"
-            android:authorities="org.lineageos.settings.device"
+            android:authorities="com.lenovo.gestures"
             android:multiprocess="false"
             android:grantUriPermissions="true"
             android:permission="android.permission.READ_SEARCH_INDEXABLES"
@@ -45,23 +48,19 @@
             </intent-filter>
         </provider>
 
-        <receiver android:name="org.lineageos.settings.device.BootCompletedReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </receiver>
-
         <activity
             android:name=".ButtonSettingsActivity"
-            android:label="@string/button_panel_title">
-            <intent-filter>
-                <action android:name="org.lineageos.settings.device.ADDITIONAL_BUTTONS_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+            android:label="@string/fingerprint_kuntao_title"
+            android:exported="true">
         </activity>
 
         <activity android:name=".KeyHandler" />
+        <receiver android:name=".BootCompletedReceiver" android:exported="true">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
