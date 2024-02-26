@@ -15,6 +15,9 @@ rm -rf system/bpf && git clone --depth=1 https://github.com/Astridxx/android_sys
 echo 'Cloning revamped fmradio'
 rm -rf packages/apps/RevampedFMRadio && git clone --depth=1 https://github.com/iusmac/RevampedFMRadio -b qcom packages/apps/RevampedFMRadio
 
+echo 'Cloning dolby atmos'
+git clone --depth=1 https://github.com/Astridxx/vendor_dolby -b lineage-19.1 vendor/dolby
+
 echo 'Cloning process completed, Patching process started...'
 
 echo 'Adding patch to Bionic'
@@ -73,6 +76,18 @@ patch -p1 <0020-CachedAppOptimizer-revert-freezer-to-cgroups-v1.patch
 patch -p1 <0021-Keystore-Spoof-locked-bootloader-on-local-attestations.patch
 patch -p1 <0023-Optimize-connected-battery-level-scanning.patch
 patch -p1 <0024-Spoof-build-fingerprint-for-Google-Play-Services.patch
+cd ../..
+
+echo 'Adding patch to Frameworks av'
+cd frameworks/av
+wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-19.1/frameworks_av/0001-OMXStore-Import-loading-libstagefrightdolby.patch
+wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-19.1/frameworks_av/0002-Import-Dolby-Effects-initialization.patch
+wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-19.1/frameworks_av/0003-Add-support-for-loading-prebuilt-ddp-decoder-lib.patch
+wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-19.1/frameworks_av/0004-Do-not-allow-DAP-effect-to-be-suspended.patch
+patch -p1 <0001-OMXStore-Import-loading-libstagefrightdolby.patch
+patch -p1 <0002-Import-Dolby-Effects-initialization.patch
+patch -p1 <0003-Add-support-for-loading-prebuilt-ddp-decoder-lib.patch
+patch -p1 <0004-Do-not-allow-DAP-effect-to-be-suspended.patch
 cd ../..
 
 echo 'Adding patch to Frameworks native'
