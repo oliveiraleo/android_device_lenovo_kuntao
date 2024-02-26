@@ -9,6 +9,9 @@ rm -rf vendor/lenovo && git clone --depth=1 https://github.com/Astridxx/propriet
 echo 'Cloning revamped fmradio'
 rm -rf packages/apps/RevampedFMRadio && git clone --depth=1 https://github.com/iusmac/RevampedFMRadio -b qcom packages/apps/RevampedFMRadio
 
+echo 'Cloning dolby atmos'
+git clone --depth=1 https://github.com/Astridxx/vendor_dolby -b lineage-20.0 vendor/dolby
+
 echo 'Cloning process completed, Patching process started...'
 
 echo 'Adding patch to Bionic'
@@ -87,6 +90,18 @@ patch -p1 <0031-Dont-use-patterned-style-ripple-effect-by-default.patch
 patch -p1 <0032-B-service-aging-propagation-on-memory-pressure.patch
 patch -p1 <0033-Spoof-build-fingerprint-for-Google-Play-Services.patch
 patch -p1 <0034-Keystore-Spoof-locked-bootloader-on-local-attestations.patch
+cd ../..
+
+echo 'Adding patch to Frameworks av'
+cd frameworks/av
+wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-20/frameworks_av/0001-OMXStore-Import-loading-libstagefrightdolby.patch
+wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-20/frameworks_av/0002-Import-Dolby-Effects-initialization.patch
+wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-20/frameworks_av/0003-Add-support-for-loading-prebuilt-ddp-decoder-lib.patch
+wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-20/frameworks_av/0004-Do-not-allow-DAP-effect-to-be-suspended.patch
+patch -p1 <0001-OMXStore-Import-loading-libstagefrightdolby.patch
+patch -p1 <0002-Import-Dolby-Effects-initialization.patch
+patch -p1 <0003-Add-support-for-loading-prebuilt-ddp-decoder-lib.patch
+patch -p1 <0004-Do-not-allow-DAP-effect-to-be-suspended.patch
 cd ../..
 
 echo 'Adding patch to Frameworks net'
