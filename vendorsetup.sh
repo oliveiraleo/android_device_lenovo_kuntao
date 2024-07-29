@@ -12,9 +12,6 @@ rm -rf system/netd && git clone --depth=1 https://github.com/Astridxx/android_sy
 echo 'Cloning system bpf'
 rm -rf system/bpf && git clone --depth=1 https://github.com/Astridxx/android_system_bpf -b lineage-19.1 system/bpf
 
-echo 'Cloning revamped fmradio'
-rm -rf packages/apps/RevampedFMRadio && git clone --depth=1 https://github.com/iusmac/RevampedFMRadio -b qcom packages/apps/RevampedFMRadio
-
 echo 'Cloning dolby atmos'
 git clone --depth=1 https://github.com/Astridxx/vendor_dolby -b lineage-19.1 vendor/dolby
 
