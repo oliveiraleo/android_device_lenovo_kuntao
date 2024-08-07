@@ -1,3 +1,5 @@
 # Allow appdomain to get exported_camera_prop
 get_prop(appdomain, exported_camera_prop);
 get_prop(appdomain, camera_prop);
+# Allow FM Radio to read required vendor properties
+get_prop(system_app, vendor_bluetooth_prop)

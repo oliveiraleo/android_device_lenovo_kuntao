@@ -77,3 +77,6 @@ persist.vendor.delta_time.enable=true
 
 # Wifi
 wifi.interface=wlan0
+
+# FM
+ro.vendor.fm.use_audio_session=true
