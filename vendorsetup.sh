@@ -56,7 +56,7 @@ wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-20/framewor
 wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-20/framework_base/0032-B-service-aging-propagation-on-memory-pressure.patch
 wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-20/framework_base/0033-Spoof-build-fingerprint-for-Google-Play-Services.patch
 wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-20/framework_base/0034-Keystore-Spoof-locked-bootloader-on-local-attestations.patch
-wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-20/framework_base/0035-Update-Spoof-fingerprint-patch
+wget https://raw.githubusercontent.com/oliveiraleo/Patch-Kuntao/lineage-20/framework_base/0035-Update-Spoof-fingerprint-patch
 patch -p1 <0001-KernelCpuUidActiveTimeReader-Do-not-spam-log-with-negative-active-time.patch
 patch -p1 <0002-Reduce-log-verbosity-Dont-spam-logcat.patch
 patch -p1 <0003-Change-the-default-value-of-sync-mode-to-Normal.patch
