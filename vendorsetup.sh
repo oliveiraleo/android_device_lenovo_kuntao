@@ -53,6 +53,7 @@ wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-19.1/framew
 wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-19.1/framework_base/0023-Optimize-connected-battery-level-scanning.patch
 wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-19.1/framework_base/0024-Spoof-build-fingerprint-for-Google-Play-Services.patch
 wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-19.1/framework_base/0025-Update-Spoof-fingerprint-patch
+wget https://raw.githubusercontent.com/oliveiraleo/Patch-Kuntao/lineage-19.1/framework_base/0025-Update-Spoof-fingerprint-patch
 patch -p1 <0001-SettingsProvider-Handle-write-device-config-permission.patch
 patch -p1 <0002-BootReceiver-Return-early-if-trace-pipe-doesnt-exists.patch
 patch -p1 <0003-Privapp-permissions-Grant-missing-TelephonyProvider-perm.patch
