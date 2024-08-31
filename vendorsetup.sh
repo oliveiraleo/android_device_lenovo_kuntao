@@ -6,9 +6,6 @@ rm -rf kernel/lenovo/msm8953 && git clone --depth=1 https://github.com/oliveiral
 echo 'Cloning vendor tree'
 rm -rf vendor/lenovo && git clone --depth=1 https://github.com/TheMuppets/proprietary_vendor_lenovo/ -b lineage-18.1 vendor/lenovo
 
-echo 'Cloning Revamped FMRadio'
-rm -rf packages/apps/RevampedFMRadio && git clone --depth=1 https://github.com/iusmac/RevampedFMRadio -b qcom packages/apps/RevampedFMRadio
-
 echo 'Cloning frameworks tree'
 rm -rf frameworks/base && git clone --depth=1 https://github.com/oliveiraleo/android_frameworks_base.git -b lineage-18.1 frameworks/base
 
