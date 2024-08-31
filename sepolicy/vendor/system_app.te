@@ -1,0 +1,2 @@
+# Revamped FMRadio
+get_prop(system_app, vendor_bluetooth_prop)

@@ -134,8 +134,8 @@ PRODUCT_PACKAGES += \
 
 # FM
 PRODUCT_PACKAGES += \
-    FMRadio \
-    libfmjni
+    RevampedFMRadio \
+    libqcomfmjni
 
 # For config.fs
 PRODUCT_PACKAGES += \
