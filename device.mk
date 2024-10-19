@@ -146,7 +146,8 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.device@1.0:64 \
     camera.msm8953 \
     libcamshim \
-    libgui_vendor:32
+    libgui_vendor:32 \
+    GrapheneCamera
 
 # CarrierConfig
 PRODUCT_PACKAGES += \
