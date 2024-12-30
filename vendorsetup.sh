@@ -57,7 +57,7 @@ wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-21/framewor
 wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-21/framework_base/0022-Fix-exception-when-retrieving-target-SDK-version.patch
 wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-21/framework_base/0023-Keystore-Spoof-locked-bootloader-on-local-attestations.patch
 wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-21/framework_base/0024-Spoof-build-fingerprint-for-Google-Play-Services.patch
-wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-21/framework_base/0025-Update-Spoof-fingerprint-patch
+# wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-21/framework_base/0025-Update-Spoof-fingerprint-patch
 wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-21/framework_base/0026-fixup-hwui-reset-to-android-13-0-0-r13.patch
 wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-21/framework_base/0027-Disable-deprecated-target-abi-dialog.patch
 wget https://raw.githubusercontent.com/Astridxx/Patch-Kuntao/lineage-21/framework_base/0028-Disable-FP-lockouts.patch
@@ -86,7 +86,7 @@ patch -p1 <0021-BiometricScheduler-Cancel-operation-if-not-idle.patch
 patch -p1 <0022-Fix-exception-when-retrieving-target-SDK-version.patch
 patch -p1 <0023-Keystore-Spoof-locked-bootloader-on-local-attestations.patch
 patch -p1 <0024-Spoof-build-fingerprint-for-Google-Play-Services.patch
-patch -p1 <0025-Update-Spoof-fingerprint-patch
+# patch -p1 <0025-Update-Spoof-fingerprint-patch
 patch -p1 <0026-fixup-hwui-reset-to-android-13-0-0-r13.patch
 patch -p1 <0027-Disable-deprecated-target-abi-dialog.patch
 patch -p1 <0028-Disable-FP-lockouts.patch
