@@ -161,6 +161,12 @@ git clone --depth 1 https://github.com/LineageOS-UL/android_vendor_lineage.git -
 # patch -p1 <91baabb9eeb08e02486777704e8e5f3ec00e2523.patch
 # cd ../../..
 
+echo 'Adding patch to libfmjni'
+cd vendor/qcom/opensource/libfmjni
+wget https://github.com/oliveiraleo/android_vendor_qcom_opensource_libfmjni/commit/5fec8509e83df0fac9fb66e45e5e28ce7a77c1a2.patch
+patch -p1 <5fec8509e83df0fac9fb66e45e5e28ce7a77c1a2.patch
+cd ../../../..
+
 echo 'Patching process completed'
 
 echo 'delete vendorsetup.sh from device tree once this is done'
