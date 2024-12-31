@@ -182,8 +182,8 @@ PRODUCT_PACKAGES += \
     libcutils_shim
 
 # Aospa FaceUnlock
-PRODUCT_PACKAGES += \
-    FaceUnlock
+# PRODUCT_PACKAGES += \
+#     FaceUnlock
 
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     ro.face.sense_service=true
